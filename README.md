@@ -1,6 +1,6 @@
-# Accenture Asessment [Android Weather App]
+# Accenture Assessment [Android Weather App]
 
-Please get your own [OpenWeather API key](https://openweathermap.org/), and place it in `gradle.properties`:
+API key destination: [OpenWeather API key](https://openweathermap.org/), and put in `gradle.properties`:
 ```
 openweather.apiKey=abc123
 ```

@@ -41,7 +41,7 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import kotlin.math.roundToInt
 import androidx.compose.runtime.Composable
-
+import androidx.compose.ui.layout.onPlaced
 
 
 @AndroidEntryPoint
@@ -110,26 +110,26 @@ fun WeatherSummary(weather: CurrentWeather) {
     Surface {
     Box {
 
-
         Image(
             painter = painterResource(id = weather.background()),
             contentDescription = "Background",
             modifier = Modifier.fillMaxWidth(),
             contentScale = ContentScale.FillWidth,
         )
-        Row(
+        Column(
             Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 10.dp, vertical = 10.dp)
+                .padding(top = 20.dp)
+                .align(Alignment.TopCenter),
+            horizontalAlignment = Alignment.CenterHorizontally
         ){
             Button(onClick = { ThemeState.isLight = !ThemeState.isLight }) {
-            if(ThemeState.isLight){
-                Text(text = "Dark")
-            }else{
-                Text(text = "Light")
+                if (ThemeState.isLight) {
+                    Text(text = "Dark Theme")
+                } else {
+                    Text(text = "Light Theme")
+                }
             }
-
-        }}
+            }
 
         Column(
             Modifier
@@ -141,6 +141,12 @@ fun WeatherSummary(weather: CurrentWeather) {
             Text(text = weather.weather.first().main, fontSize = 30.sp)
             Text(text = weather.name, fontSize = 20.sp)
             Text(text = weather.sys.country, fontSize = 18.sp)
+            Button(onClick = { },
+                modifier = Modifier.padding(horizontal = 40.dp, vertical = 30.dp)
+            )
+            {
+                Text(text = "Search Location")
+            }
 
         }
     }
@@ -148,15 +154,16 @@ fun WeatherSummary(weather: CurrentWeather) {
 }
 
 
+
+
 @Composable
 fun TemperatureSummary(weather: CurrentWeather) {
     Surface {
 
-
         Row(
             Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 24.dp, vertical = 8.dp),
+                .padding(horizontal = 24.dp, vertical = 20.dp),
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
 
@@ -195,14 +202,12 @@ fun TemperatureSummary(weather: CurrentWeather) {
 @Composable
 fun FiveDayForecast(forecast: List<FullWeather.Daily>) {
     Surface {
-
-
         LazyColumn {
             items(forecast) { dayForecast ->
                 Box(
                     Modifier
                         .fillMaxWidth()
-                        .padding(horizontal = 30.dp, vertical = 15.dp)
+                        .padding(horizontal = 30.dp, vertical = 10.dp)
                 ) {
                     Text(
                         text = SimpleDateFormat("EEEE").format(Date(dayForecast.dt * 1_000)),
