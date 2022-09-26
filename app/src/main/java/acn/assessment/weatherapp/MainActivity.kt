@@ -41,7 +41,7 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import kotlin.math.roundToInt
 import androidx.compose.runtime.Composable
-
+import androidx.compose.ui.tooling.preview.Preview
 
 
 @AndroidEntryPoint
@@ -152,11 +152,10 @@ fun WeatherSummary(weather: CurrentWeather) {
 fun TemperatureSummary(weather: CurrentWeather) {
     Surface {
 
-
         Row(
             Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 24.dp, vertical = 8.dp),
+                .padding(horizontal = 24.dp, vertical = 30.dp),
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
 
@@ -195,14 +194,12 @@ fun TemperatureSummary(weather: CurrentWeather) {
 @Composable
 fun FiveDayForecast(forecast: List<FullWeather.Daily>) {
     Surface {
-
-
         LazyColumn {
             items(forecast) { dayForecast ->
                 Box(
                     Modifier
                         .fillMaxWidth()
-                        .padding(horizontal = 30.dp, vertical = 15.dp)
+                        .padding(horizontal = 30.dp, vertical = 10.dp)
                 ) {
                     Text(
                         text = SimpleDateFormat("EEEE").format(Date(dayForecast.dt * 1_000)),
