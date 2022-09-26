@@ -41,7 +41,7 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import kotlin.math.roundToInt
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.layout.onPlaced
 
 
 @AndroidEntryPoint
@@ -110,7 +110,6 @@ fun WeatherSummary(weather: CurrentWeather) {
     Surface {
     Box {
 
-
         Image(
             painter = painterResource(id = weather.background()),
             contentDescription = "Background",
@@ -123,13 +122,20 @@ fun WeatherSummary(weather: CurrentWeather) {
                 .padding(horizontal = 10.dp, vertical = 10.dp)
         ){
             Button(onClick = { ThemeState.isLight = !ThemeState.isLight }) {
-            if(ThemeState.isLight){
-                Text(text = "Dark")
-            }else{
-                Text(text = "Light")
+                if (ThemeState.isLight) {
+                    Text(text = "Dark")
+                } else {
+                    Text(text = "Light")
+                }
             }
 
-        }}
+            Button(onClick = { },
+                modifier = Modifier.padding(horizontal = 40.dp)
+            )
+                {
+                    Text(text = "Search Location")
+                }
+            }
 
         Column(
             Modifier
@@ -146,6 +152,8 @@ fun WeatherSummary(weather: CurrentWeather) {
     }
 }
 }
+
+
 
 
 @Composable
