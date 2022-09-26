@@ -116,25 +116,19 @@ fun WeatherSummary(weather: CurrentWeather) {
             modifier = Modifier.fillMaxWidth(),
             contentScale = ContentScale.FillWidth,
         )
-        Row(
+        Column(
             Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 10.dp, vertical = 10.dp)
+                .padding(top = 20.dp)
+                .align(Alignment.TopCenter),
+            horizontalAlignment = Alignment.CenterHorizontally
         ){
             Button(onClick = { ThemeState.isLight = !ThemeState.isLight }) {
                 if (ThemeState.isLight) {
-                    Text(text = "Dark")
+                    Text(text = "Dark Theme")
                 } else {
-                    Text(text = "Light")
+                    Text(text = "Light Theme")
                 }
             }
-
-            Button(onClick = { },
-                modifier = Modifier.padding(horizontal = 40.dp)
-            )
-                {
-                    Text(text = "Search Location")
-                }
             }
 
         Column(
@@ -147,6 +141,12 @@ fun WeatherSummary(weather: CurrentWeather) {
             Text(text = weather.weather.first().main, fontSize = 30.sp)
             Text(text = weather.name, fontSize = 20.sp)
             Text(text = weather.sys.country, fontSize = 18.sp)
+            Button(onClick = { },
+                modifier = Modifier.padding(horizontal = 40.dp, vertical = 30.dp)
+            )
+            {
+                Text(text = "Search Location")
+            }
 
         }
     }
@@ -163,7 +163,7 @@ fun TemperatureSummary(weather: CurrentWeather) {
         Row(
             Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 24.dp, vertical = 30.dp),
+                .padding(horizontal = 24.dp, vertical = 20.dp),
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
 
