@@ -102,8 +102,6 @@ fun MainScreen(viewModel: MainViewModel) {
     }
 }
 
-
-
 @Composable
 fun WeatherSummary(weather: CurrentWeather) {
 
@@ -152,9 +150,6 @@ fun WeatherSummary(weather: CurrentWeather) {
     }
 }
 }
-
-
-
 
 @Composable
 fun TemperatureSummary(weather: CurrentWeather) {
@@ -237,7 +232,6 @@ fun FiveDayForecast(forecast: List<FullWeather.Daily>) {
         }
     }
 }
-
 
 @Composable
 private fun formatTemperature(temperature: Double): String {
