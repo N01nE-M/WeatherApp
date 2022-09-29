@@ -41,7 +41,6 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import kotlin.math.roundToInt
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.layout.onPlaced
 
 
 @AndroidEntryPoint
@@ -53,7 +52,8 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             WeatherAppTheme {
-                val permission = rememberPermissionState(permission = Manifest.permission.ACCESS_FINE_LOCATION)
+                val permission =
+                    rememberPermissionState(permission = Manifest.permission.ACCESS_FINE_LOCATION)
 
                 PermissionRequired(
                     permissionState = permission,
@@ -62,8 +62,8 @@ class MainActivity : ComponentActivity() {
 
                 )
                 {
-                    Surface( color = MaterialTheme.colors.primary) {
-                        
+                    Surface(color = MaterialTheme.colors.primary) {
+
                     }
                     MainScreen(viewModel)
                 }
@@ -74,7 +74,6 @@ class MainActivity : ComponentActivity() {
     }
 
 }
-
 
 @Composable
 fun MainScreen(viewModel: MainViewModel) {
@@ -106,49 +105,50 @@ fun MainScreen(viewModel: MainViewModel) {
 fun WeatherSummary(weather: CurrentWeather) {
 
     Surface {
-    Box {
+        Box {
 
-        Image(
-            painter = painterResource(id = weather.background()),
-            contentDescription = "Background",
-            modifier = Modifier.fillMaxWidth(),
-            contentScale = ContentScale.FillWidth,
-        )
-        Column(
-            Modifier
-                .padding(top = 20.dp)
-                .align(Alignment.TopCenter),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ){
-            Button(onClick = { ThemeState.isLight = !ThemeState.isLight }) {
-                if (ThemeState.isLight) {
-                    Text(text = "Dark Theme")
-                } else {
-                    Text(text = "Light Theme")
+            Image(
+                painter = painterResource(id = weather.background()),
+                contentDescription = "Background",
+                modifier = Modifier.fillMaxWidth(),
+                contentScale = ContentScale.FillWidth,
+            )
+            Column(
+                Modifier
+                    .padding(top = 20.dp)
+                    .align(Alignment.TopCenter),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Button(onClick = { ThemeState.isLight = !ThemeState.isLight }) {
+                    if (ThemeState.isLight) {
+                        Text(text = "Dark Theme")
+                    } else {
+                        Text(text = "Light Theme")
+                    }
                 }
             }
-            }
 
-        Column(
-            Modifier
-                .padding(top = 100.dp)
-                .align(Alignment.TopCenter),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Text(text = formatTemperature(weather.main.temp), fontSize = 50.sp)
-            Text(text = weather.weather.first().main, fontSize = 30.sp)
-            Text(text = weather.name, fontSize = 20.sp)
-            Text(text = weather.sys.country, fontSize = 18.sp)
-            Button(onClick = { },
-                modifier = Modifier.padding(horizontal = 40.dp, vertical = 30.dp)
-            )
-            {
-                Text(text = "Search Location")
-            }
+            Column(
+                Modifier
+                    .padding(top = 100.dp)
+                    .align(Alignment.TopCenter),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Text(text = formatTemperature(weather.main.temp), fontSize = 50.sp)
+                Text(text = weather.weather.first().main, fontSize = 30.sp)
+                Text(text = weather.name, fontSize = 20.sp)
+                Text(text = weather.sys.country, fontSize = 18.sp)
+                Button(
+                    onClick = { },
+                    modifier = Modifier.padding(horizontal = 40.dp, vertical = 30.dp)
+                )
+                {
+                    Text(text = "Search Location")
+                }
 
+            }
         }
     }
-}
 }
 
 @Composable
