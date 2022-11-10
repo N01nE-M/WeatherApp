@@ -1,7 +1,7 @@
 package acn.assessment.weatherapp.service
 
-import acn.assessment.weatherapp.service.dto.CurrentWeather
-import acn.assessment.weatherapp.service.dto.FullWeather
+import acn.assessment.weatherapp.service.data.dto.CurrentWeather
+import acn.assessment.weatherapp.service.data.dto.FullWeather
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query

@@ -1,4 +1,4 @@
-package acn.assessment.weatherapp.service
+package acn.assessment.weatherapp.service.data.repositories
 
 import android.Manifest.permission.ACCESS_FINE_LOCATION
 import android.app.Application
@@ -6,8 +6,9 @@ import android.location.Location
 import android.os.Looper
 import androidx.annotation.RequiresPermission
 import acn.assessment.weatherapp.BuildConfig
-import acn.assessment.weatherapp.service.dto.CurrentWeather
-import acn.assessment.weatherapp.service.dto.FullWeather
+import acn.assessment.weatherapp.service.OpenWeatherService
+import acn.assessment.weatherapp.service.data.dto.CurrentWeather
+import acn.assessment.weatherapp.service.data.dto.FullWeather
 import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationResult
