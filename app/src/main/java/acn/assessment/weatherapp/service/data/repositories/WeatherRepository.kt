@@ -7,8 +7,8 @@ import android.os.Looper
 import androidx.annotation.RequiresPermission
 import acn.assessment.weatherapp.BuildConfig
 import acn.assessment.weatherapp.service.OpenWeatherService
-import acn.assessment.weatherapp.service.data.dto.CurrentWeather
-import acn.assessment.weatherapp.service.data.dto.FullWeather
+import acn.assessment.weatherapp.service.data.remotemodel.CurrentWeather
+import acn.assessment.weatherapp.service.data.remotemodel.FullWeather
 import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationResult

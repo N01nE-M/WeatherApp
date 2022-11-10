@@ -1,8 +1,5 @@
 package acn.assessment.weatherapp
 
-import acn.assessment.weatherapp.LocationPermissionDetails
-import acn.assessment.weatherapp.LocationPermissionNotAvailable
-import acn.assessment.weatherapp.R
 import android.Manifest
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -28,8 +25,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import acn.assessment.weatherapp.service.data.dto.CurrentWeather
-import acn.assessment.weatherapp.service.data.dto.FullWeather
+import acn.assessment.weatherapp.service.data.remotemodel.CurrentWeather
+import acn.assessment.weatherapp.service.data.remotemodel.FullWeather
 import acn.assessment.weatherapp.ui.theme.ThemeState
 import acn.assessment.weatherapp.ui.theme.WeatherAppTheme
 import acn.assessment.weatherapp.viewmodels.MainViewModel
