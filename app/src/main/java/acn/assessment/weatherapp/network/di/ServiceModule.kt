@@ -1,4 +1,4 @@
-package acn.assessment.weatherapp.di
+package acn.assessment.weatherapp.network.di
 
 import acn.assessment.weatherapp.service.OpenWeatherService
 import dagger.Module
