@@ -1,4 +1,4 @@
-package acn.assessment.weatherapp.service.data.repositories
+package acn.assessment.weatherapp.datasource.repository
 
 import android.Manifest.permission.ACCESS_FINE_LOCATION
 import android.app.Application
@@ -6,13 +6,10 @@ import android.location.Location
 import android.os.Looper
 import androidx.annotation.RequiresPermission
 import acn.assessment.weatherapp.BuildConfig
-import acn.assessment.weatherapp.service.OpenWeatherService
-import acn.assessment.weatherapp.service.data.remotemodel.CurrentWeather
-import acn.assessment.weatherapp.service.data.remotemodel.FullWeather
-import com.google.android.gms.location.LocationCallback
-import com.google.android.gms.location.LocationRequest
-import com.google.android.gms.location.LocationResult
-import com.google.android.gms.location.LocationServices
+import acn.assessment.weatherapp.datasource.api.OpenWeatherService
+import acn.assessment.weatherapp.datasource.remotemodel.CurrentWeather
+import acn.assessment.weatherapp.datasource.remotemodel.FullWeather
+import com.google.android.gms.location.*
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.channelFlow
@@ -54,7 +51,7 @@ class WeatherRepository @Inject constructor(
         val request = LocationRequest.create()
             .setInterval(10_000)
             .setFastestInterval(5_000)
-            .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
+            .setPriority(Priority.PRIORITY_HIGH_ACCURACY)
             .setSmallestDisplacement(170f)
 
         client.requestLocationUpdates(request, callback, Looper.getMainLooper())

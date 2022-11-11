@@ -1,4 +1,4 @@
-package acn.assessment.weatherapp.application
+package acn.assessment.weatherapp.core
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

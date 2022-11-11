@@ -1,4 +1,4 @@
-package acn.assessment.weatherapp.service.data.remotemodel
+package acn.assessment.weatherapp.datasource.remotemodel
 
 import com.google.gson.annotations.SerializedName
 
