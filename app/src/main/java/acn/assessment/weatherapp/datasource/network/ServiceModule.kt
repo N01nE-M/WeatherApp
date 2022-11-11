@@ -1,6 +1,6 @@
-package acn.assessment.weatherapp.network.di
+package acn.assessment.weatherapp.datasource.network
 
-import acn.assessment.weatherapp.service.OpenWeatherService
+import acn.assessment.weatherapp.datasource.api.OpenWeatherService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
