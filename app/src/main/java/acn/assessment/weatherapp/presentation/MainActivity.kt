@@ -207,14 +207,13 @@ fun FiveDayForecast(forecast: List<FullWeather.Daily>) {
                 Box(
                     Modifier
                         .fillMaxWidth()
-                        .padding(horizontal = 10.dp, vertical = 10.dp)
+                        .padding(vertical = 15.dp),
                 ) {
                     Row(
                         modifier = Modifier
                             .fillMaxWidth(),
-                        horizontalArrangement = Arrangement.SpaceAround
-
-                    ) {
+                        horizontalArrangement = Arrangement.SpaceAround,
+                        ) {
                         Text(
                             text = SimpleDateFormat("EEEE").format(Date(dayForecast.dt * 1_000)),
                             modifier = Modifier
@@ -226,20 +225,14 @@ fun FiveDayForecast(forecast: List<FullWeather.Daily>) {
                             modifier = Modifier
                                 .size(30.dp)
 
-
-
                         )
                         Text(
                             text = dayForecast.humidity.toString() + "%",
-                            modifier = Modifier
-                                .padding(horizontal = 10.dp)
-
 
                         )
                         Text(
                             text = formatTemperature(dayForecast.temp.day),
                         )
-
                     }
                 }
             }
@@ -251,7 +244,6 @@ fun FiveDayForecast(forecast: List<FullWeather.Daily>) {
 private fun formatTemperature(temperature: Double): String {
     return stringResource(R.string.temperature_degrees, temperature.roundToInt())
 }
-
 
 
 @DrawableRes
