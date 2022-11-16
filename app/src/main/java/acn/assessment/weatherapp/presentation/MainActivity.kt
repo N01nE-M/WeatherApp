@@ -163,8 +163,8 @@ fun TemperatureSummary(weather: CurrentWeather) {
         Row(
             Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 24.dp, vertical = 20.dp),
-            horizontalArrangement = Arrangement.SpaceBetween
+                .padding(vertical = 20.dp),
+            horizontalArrangement = Arrangement.SpaceAround
         ) {
 
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
@@ -207,31 +207,40 @@ fun FiveDayForecast(forecast: List<FullWeather.Daily>) {
                 Box(
                     Modifier
                         .fillMaxWidth()
-                        .padding(horizontal = 30.dp, vertical = 10.dp)
+                        .padding(horizontal = 10.dp, vertical = 10.dp)
                 ) {
-                    Text(
-                        text = SimpleDateFormat("EEEE").format(Date(dayForecast.dt * 1_000)),
-                        modifier = Modifier.align(Alignment.CenterStart)
-                    )
-                    Image(
-                        painter = painterResource(dayForecast.forecastIcon()),
-                        contentDescription = "Forecast icon",
+                    Row(
                         modifier = Modifier
-                            .size(32.dp)
-                            .align(Alignment.Center)
+                            .fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceAround
 
-                    )
-                    Text(
-                        text = dayForecast.humidity.toString() + "%",
-                        modifier = Modifier
-                            .align(Alignment.CenterEnd)
-                            .padding(horizontal = 65.dp)
-                    )
-                    Text(
-                        text = formatTemperature(dayForecast.temp.day),
-                        modifier = Modifier.align(Alignment.CenterEnd)
-                    )
+                    ) {
+                        Text(
+                            text = SimpleDateFormat("EEEE").format(Date(dayForecast.dt * 1_000)),
+                            modifier = Modifier
+                                .width(70.dp)
+                        )
+                        Image(
+                            painter = painterResource(dayForecast.forecastIcon()),
+                            contentDescription = "Forecast icon",
+                            modifier = Modifier
+                                .size(30.dp)
 
+
+
+                        )
+                        Text(
+                            text = dayForecast.humidity.toString() + "%",
+                            modifier = Modifier
+                                .padding(horizontal = 10.dp)
+
+
+                        )
+                        Text(
+                            text = formatTemperature(dayForecast.temp.day),
+                        )
+
+                    }
                 }
             }
         }
