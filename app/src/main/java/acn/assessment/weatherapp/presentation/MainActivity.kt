@@ -73,11 +73,8 @@ class MainActivity : ComponentActivity() {
 }
 
 
-
-
-
 @Composable
-fun MainScreen(viewModel:MainViewModel) {
+fun MainScreen(viewModel: MainViewModel) {
     val current by viewModel.current.collectAsState(null)
     val forecast by viewModel.forecast.collectAsState(emptyList())
     current?.let {
@@ -91,7 +88,7 @@ fun MainScreen(viewModel:MainViewModel) {
         current?.let {
             WeatherSummary(weather = it)
             TemperatureSummary(it)
-            Divider(color = Color.White)
+            Divider(color = MaterialTheme.colors.primary)
         }
         FiveDayForecast(forecast)
         Box(
@@ -104,10 +101,8 @@ fun MainScreen(viewModel:MainViewModel) {
 
 @Composable
 fun WeatherSummary(weather: CurrentWeather) {
-
     Surface {
         Box {
-
             Image(
                 painter = painterResource(id = weather.background()),
                 contentDescription = "Background",
@@ -120,11 +115,18 @@ fun WeatherSummary(weather: CurrentWeather) {
                     .align(Alignment.TopCenter),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Button(onClick = { ThemeState.isLight = !ThemeState.isLight }) {
+                Button(
+                    onClick = { ThemeState.isLight = !ThemeState.isLight },
+                    colors = ButtonDefaults.buttonColors(
+                        backgroundColor = MaterialTheme.colors.background,
+                        contentColor = MaterialTheme.colors.primary
+                    )
+                ) {
                     if (ThemeState.isLight) {
-                        Text(text = "Dark Theme")
+                        Text(text = "Dark")
                     } else {
-                        Text(text = "Light Theme")
+                        Text(text = "Light")
+
                     }
                 }
             }
@@ -135,18 +137,21 @@ fun WeatherSummary(weather: CurrentWeather) {
                     .align(Alignment.TopCenter),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Text(text = formatTemperature(weather.main.temp), fontSize = 50.sp)
+                Text(text = formatTemperature(weather.main.tempMax), fontSize = 50.sp)
                 Text(text = weather.weather.first().main, fontSize = 30.sp)
                 Text(text = weather.name, fontSize = 20.sp)
                 Text(text = weather.sys.country, fontSize = 18.sp)
                 Button(
                     onClick = { },
+                    colors = ButtonDefaults.buttonColors(
+                        backgroundColor = MaterialTheme.colors.background,
+                        contentColor = MaterialTheme.colors.primary
+                    ),
                     modifier = Modifier.padding(horizontal = 40.dp, vertical = 30.dp)
                 )
                 {
                     Text(text = "Search Location")
                 }
-
             }
         }
     }
@@ -164,7 +169,7 @@ fun TemperatureSummary(weather: CurrentWeather) {
 
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
                 Text(
-                    text = formatTemperature(weather.main.tempMin),
+                    text = formatTemperature(weather.main.tempMax),
                     fontSize = 18.sp,
                 )
                 Text(text = stringResource(R.string.min_temperature))
@@ -237,6 +242,8 @@ fun FiveDayForecast(forecast: List<FullWeather.Daily>) {
 private fun formatTemperature(temperature: Double): String {
     return stringResource(R.string.temperature_degrees, temperature.roundToInt())
 }
+
+
 
 @DrawableRes
 private fun CurrentWeather.background(): Int {
