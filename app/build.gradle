@@ -4,9 +4,10 @@ plugins {
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
 }
+apply plugin: 'kotlin-android'
 
 android {
-    compileSdk 31
+    compileSdk 33
 
     defaultConfig {
         applicationId "acn.assessment.weatherapp"
@@ -67,6 +68,7 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxjava:2.2.9'
     implementation "com.squareup.retrofit2:adapter-rxjava2:2.5.0"
     implementation "com.google.dagger:hilt-android:$hilt_version"
+    implementation 'androidx.activity:activity-ktx:1.6.1'
     kapt "com.google.dagger:hilt-compiler:$hilt_version"
     implementation 'com.google.android.gms:play-services-location:20.0.0'
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
@@ -78,4 +80,9 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
     debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
+    implementation "androidx.core:core-ktx:+"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+}
+repositories {
+
 }
