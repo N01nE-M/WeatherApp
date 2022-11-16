@@ -3,9 +3,8 @@ package acn.assessment.weatherapp.presentation
 import acn.assessment.weatherapp.LocationPermissionDetails
 import acn.assessment.weatherapp.LocationPermissionNotAvailable
 import acn.assessment.weatherapp.R
-import acn.assessment.weatherapp.datasource.remotemodel.CurrentWeather
-import acn.assessment.weatherapp.datasource.remotemodel.FullWeather
-import acn.assessment.weatherapp.presentation.MainViewModel
+import acn.assessment.weatherapp.datasource.model.CurrentWeather
+import acn.assessment.weatherapp.datasource.model.FullWeather
 import acn.assessment.weatherapp.ui.theme.ThemeState
 import acn.assessment.weatherapp.ui.theme.WeatherAppTheme
 import android.Manifest
@@ -73,8 +72,12 @@ class MainActivity : ComponentActivity() {
 
 }
 
+
+
+
+
 @Composable
-fun MainScreen(viewModel: MainViewModel) {
+fun MainScreen(viewModel:MainViewModel) {
     val current by viewModel.current.collectAsState(null)
     val forecast by viewModel.forecast.collectAsState(emptyList())
     current?.let {

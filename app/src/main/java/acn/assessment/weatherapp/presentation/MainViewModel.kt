@@ -1,21 +1,20 @@
 package acn.assessment.weatherapp.presentation
 
-import android.annotation.SuppressLint
+import acn.assessment.weatherapp.domain.usecase.GetCurrentWeatherUseCase
+import acn.assessment.weatherapp.domain.usecase.GetFiveDayForecastUseCase
 import androidx.lifecycle.ViewModel
-import acn.assessment.weatherapp.datasource.repository.WeatherRepository
-import acn.assessment.weatherapp.datasource.remotemodel.CurrentWeather
-import acn.assessment.weatherapp.datasource.remotemodel.FullWeather
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-@SuppressLint("MissingPermission")
+
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    repository: WeatherRepository
-) : ViewModel() {
+        private val getCurrentWeatherUseCase: GetCurrentWeatherUseCase,
+        private val getFiveDayForecastUseCase: GetFiveDayForecastUseCase
 
-    val current: Flow<CurrentWeather> = repository.getCurrentWeather()
-    val forecast: Flow<List<FullWeather.Daily>> = repository.getFiveDayForecast()
+): ViewModel() {
+
+        val current = getCurrentWeatherUseCase.currentWeather
+        val forecast = getFiveDayForecastUseCase.fiveDayForecast
 
 }
