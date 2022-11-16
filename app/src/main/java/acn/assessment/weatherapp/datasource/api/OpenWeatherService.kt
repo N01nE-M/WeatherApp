@@ -1,7 +1,7 @@
 package acn.assessment.weatherapp.datasource.api
 
-import acn.assessment.weatherapp.datasource.remotemodel.CurrentWeather
-import acn.assessment.weatherapp.datasource.remotemodel.FullWeather
+import acn.assessment.weatherapp.datasource.model.CurrentWeather
+import acn.assessment.weatherapp.datasource.model.FullWeather
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query

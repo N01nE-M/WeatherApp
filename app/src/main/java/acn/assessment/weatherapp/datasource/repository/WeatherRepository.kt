@@ -1,14 +1,14 @@
 package acn.assessment.weatherapp.datasource.repository
 
+import acn.assessment.weatherapp.BuildConfig
+import acn.assessment.weatherapp.datasource.api.OpenWeatherService
+import acn.assessment.weatherapp.datasource.model.CurrentWeather
+import acn.assessment.weatherapp.datasource.model.FullWeather
 import android.Manifest.permission.ACCESS_FINE_LOCATION
 import android.app.Application
 import android.location.Location
 import android.os.Looper
 import androidx.annotation.RequiresPermission
-import acn.assessment.weatherapp.BuildConfig
-import acn.assessment.weatherapp.datasource.api.OpenWeatherService
-import acn.assessment.weatherapp.datasource.remotemodel.CurrentWeather
-import acn.assessment.weatherapp.datasource.remotemodel.FullWeather
 import com.google.android.gms.location.*
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
