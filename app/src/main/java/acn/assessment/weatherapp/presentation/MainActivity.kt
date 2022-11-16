@@ -207,15 +207,13 @@ fun FiveDayForecast(forecast: List<FullWeather.Daily>) {
                 Box(
                     Modifier
                         .fillMaxWidth()
-
+                        .padding(vertical = 15.dp),
                 ) {
                     Row(
                         modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(vertical = 17.dp),
-                        horizontalArrangement = Arrangement.SpaceAround
-
-                    ) {
+                            .fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceAround,
+                        ) {
                         Text(
                             text = SimpleDateFormat("EEEE").format(Date(dayForecast.dt * 1_000)),
                             modifier = Modifier
@@ -227,13 +225,9 @@ fun FiveDayForecast(forecast: List<FullWeather.Daily>) {
                             modifier = Modifier
                                 .size(30.dp)
 
-
                         )
                         Text(
                             text = dayForecast.humidity.toString() + "%",
-                            modifier = Modifier
-                                .padding(horizontal = 10.dp)
-
 
                         )
                         Text(
