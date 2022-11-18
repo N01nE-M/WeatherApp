@@ -1,6 +1,6 @@
 package acn.assessment.weatherapp.datasource.network
 
-import acn.assessment.weatherapp.datasource.api.OpenWeatherService
+import acn.assessment.weatherapp.datasource.api.OpenWeatherApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,7 +16,7 @@ object ServiceModule {
 
     @Provides
     @Singleton
-    fun provideOpenWeatherService(): OpenWeatherService {
+    fun provideOpenWeatherService(): OpenWeatherApi {
         return Retrofit.Builder()
             .baseUrl("https://api.openweathermap.org/data/2.5/")
             .addConverterFactory(GsonConverterFactory.create())

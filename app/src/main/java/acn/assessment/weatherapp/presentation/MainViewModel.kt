@@ -10,11 +10,11 @@ import javax.inject.Inject
 @HiltViewModel
 class MainViewModel @Inject constructor(
         private val getCurrentWeatherUseCase: GetCurrentWeatherUseCase,
-        private val getFiveDayForecastUseCase: GetFiveDayForecastUseCase
+        private val getFiveDayForecastUseCase: GetFiveDayForecastUseCase,
 
 ): ViewModel() {
 
-        val current = getCurrentWeatherUseCase.currentWeather
-        val forecast = getFiveDayForecastUseCase.fiveDayForecast
+       operator fun invoke() = getCurrentWeatherUseCase.getCurrent()
+       val forecast = getFiveDayForecastUseCase.getFiveDay()
 
 }
