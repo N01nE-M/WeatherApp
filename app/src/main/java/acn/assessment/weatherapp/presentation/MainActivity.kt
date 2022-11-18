@@ -75,7 +75,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun MainScreen(viewModel: MainViewModel) {
-    val current by viewModel.current.collectAsState(null)
+    val current by viewModel.invoke().collectAsState(null)
     val forecast by viewModel.forecast.collectAsState(emptyList())
     current?.let {
         rememberSystemUiController().setStatusBarColor(it.backgroundColour())
@@ -217,7 +217,7 @@ fun FiveDayForecast(forecast: List<FullWeather.Daily>) {
                         Text(
                             text = SimpleDateFormat("EEEE").format(Date(dayForecast.dt * 1_000)),
                             modifier = Modifier
-                                .width(70.dp)
+                                .width(87.dp)
                         )
                         Image(
                             painter = painterResource(dayForecast.forecastIcon()),

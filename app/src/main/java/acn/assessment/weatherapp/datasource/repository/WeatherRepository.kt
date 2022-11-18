@@ -1,7 +1,7 @@
 package acn.assessment.weatherapp.datasource.repository
 
 import acn.assessment.weatherapp.BuildConfig
-import acn.assessment.weatherapp.datasource.api.OpenWeatherService
+import acn.assessment.weatherapp.datasource.api.OpenWeatherApi
 import acn.assessment.weatherapp.datasource.model.CurrentWeather
 import acn.assessment.weatherapp.datasource.model.FullWeather
 import android.Manifest.permission.ACCESS_FINE_LOCATION
@@ -18,7 +18,7 @@ import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 class WeatherRepository @Inject constructor(
-    private val service: OpenWeatherService,
+    private val service: OpenWeatherApi,
     private val application: Application
 ) {
 
