@@ -39,7 +39,6 @@ import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.math.roundToInt
 
-
 @AndroidEntryPoint
 @ExperimentalPermissionsApi
 class MainActivity : ComponentActivity() {
@@ -67,16 +66,13 @@ class MainActivity : ComponentActivity() {
 
             }
         }
-
     }
-
 }
-
 
 @Composable
 fun MainScreen(viewModel: MainViewModel) {
-    val current by viewModel.invoke().collectAsState(null)
-    val forecast by viewModel.forecast.collectAsState(emptyList())
+    val current by viewModel.currentWeather.collectAsState(null)
+    val forecast by viewModel.fiveDayForecast.collectAsState(emptyList())
     current?.let {
         rememberSystemUiController().setStatusBarColor(it.backgroundColour())
     }
@@ -213,7 +209,7 @@ fun FiveDayForecast(forecast: List<FullWeather.Daily>) {
                         modifier = Modifier
                             .fillMaxWidth(),
                         horizontalArrangement = Arrangement.SpaceAround,
-                        ) {
+                    ) {
                         Text(
                             text = SimpleDateFormat("EEEE").format(Date(dayForecast.dt * 1_000)),
                             modifier = Modifier
@@ -229,7 +225,7 @@ fun FiveDayForecast(forecast: List<FullWeather.Daily>) {
                         Text(
                             text = dayForecast.humidity.toString() + "%",
 
-                        )
+                            )
                         Text(
                             text = formatTemperature(dayForecast.temp.day),
                         )
