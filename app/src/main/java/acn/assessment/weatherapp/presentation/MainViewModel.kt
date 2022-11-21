@@ -14,7 +14,7 @@ class MainViewModel @Inject constructor(
 
 ): ViewModel() {
 
-       operator fun invoke() = getCurrentWeatherUseCase.getCurrent()
-       val forecast = getFiveDayForecastUseCase.getFiveDay()
+       val currentWeather = getCurrentWeatherUseCase()
+       val fiveDayForecast = getFiveDayForecastUseCase()
 
 }

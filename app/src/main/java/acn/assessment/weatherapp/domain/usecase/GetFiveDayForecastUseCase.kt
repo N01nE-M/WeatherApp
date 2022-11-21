@@ -10,5 +10,5 @@ import javax.inject.Inject
 class GetFiveDayForecastUseCase @Inject constructor(
     private val repository: WeatherRepository
 ) {
-   fun getFiveDay() = repository.getFiveDayForecast()
+    operator fun invoke() = repository.getFiveDayForecast()
 }

@@ -8,6 +8,6 @@ import javax.inject.Inject
 class GetCurrentWeatherUseCase @Inject constructor(
     private val repository: WeatherRepository
 )  {
-     fun getCurrent() = repository.getCurrentWeather()
+     operator fun invoke() = repository.getCurrentWeather()
 }
 
